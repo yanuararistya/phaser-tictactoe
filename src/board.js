@@ -27,14 +27,13 @@ class Board extends Phaser.Sprite {
 				gameState.setState(position);
 
 				const textPos = {
-					x: this.left + (position.x * tile.width) + (tile.width/2),
-					y: this.top + (position.y * tile.height) + (tile.height/2)
-				}
-				const text = this.game.add.text(textPos.x, textPos.y, gameState.getState(position), 
-				{
-					fontSize: '60px'
-				});
+				 	x: (position.x-1) * tile.width,
+				 	y: (position.y-1) * tile.height
+				}				
+				const text = this.game.make.text(textPos.x, textPos.y, gameState.getState(position), 
+					{fontSize:'60px'});
 				text.anchor.set(0.5);
+				this.addChild(text);
 			}
 
 		}, this);
